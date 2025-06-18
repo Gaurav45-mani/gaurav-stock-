@@ -1,8 +1,88 @@
 <!DOCTYPE html>
-<html>
-<head><title>Gaurav Stock</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaurav's Stock Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f4f7;
+      padding: 20px;
+      text-align: center;
+    }
+    .stock-card {
+      background: white;
+      padding: 15px;
+      margin: 15px auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2e5aac;
+    }
+  </style>
+</head>
 <body>
-  <h1>Welcome to Gaurav Stock</h1>
-  <p>Your trusted place for stock updates!</p>
+
+  <h1>📈 Gaurav's Stock Tracker</h1>
+
+  <div class="stock-card">
+    <h2>Reliance Power</h2>
+    <p>Price: ₹<span id="reliance-price">18.45</span></p>
+    <canvas id="reliance-chart" width="400" height="200"></canvas>
+  </div>
+
+  <div class="stock-card">
+    <h2>IOCL</h2>
+    <p>Price: ₹<span id="iocl-price">153.10</span></p>
+  </div>
+
+  <div class="stock-card">
+    <h2>NTPC Green Energy</h2>
+    <p>Price: ₹<span id="ntpc-price">115.75</span></p>
+  </div>
+
+  <div class="stock-card">
+    <h2>Mahindra Manulife Tech ETF</h2>
+    <p>Price: ₹<span id="mahktech-price">22.45</span></p>
+  </div>
+
+  <div class="stock-card">
+    <h2>NBCC</h2>
+    <p>Price: ₹<span id="nbcc-price">74.20</span></p>
+  </div>
+
+  <script>
+    // Dummy price chart for Reliance Power
+    const ctx = document.getElementById('reliance-chart').getContext('2d');
+    const relianceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM'],
+        datasets: [{
+          label: 'Price ₹',
+          data: [17.8, 18.1, 18.0, 18.2, 18.4, 18.45],
+          backgroundColor: 'rgba(46, 90, 172, 0.2)',
+          borderColor: '#2e5aac',
+          borderWidth: 2,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        }
+      }
+    });
+
+    // In future, you can replace static prices with live values from Flask or API
+  </script>
 </body>
 </html>
